@@ -38,7 +38,7 @@ module.exports = class TaskController{
 
     static async deleteTask(req, res) {
         try {
-            task = await Task.findByPk(req.params.id);
+            const task = await Task.findByPk(req.params.id);
             await task.destroy();
             res.status(200).json({msg: "Task excluída com sucesso!"});
         } catch(err) {
