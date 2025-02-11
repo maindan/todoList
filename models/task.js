@@ -14,12 +14,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Task.init({
-    title: DataTypes.STRING,
-    completed: DataTypes.BOOLEAN
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    }
   }, {
     sequelize,
     modelName: 'Task',
-    tableName: 'task'
+    tableName: 'task',
+    timestamps: false,
+    createdAt: 'createdAt'
   });
   return Task;
 };
